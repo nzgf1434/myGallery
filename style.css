@@ -117,10 +117,18 @@ body{
     padding-bottom: 80px;
 }
 /************************************ My CSS ***********************************/
-.lg-item{
+/* .lg-item{
     display: none;
-}
+} */
 .show{
     display: block;
 }
-        
+.demo-gallery > ul > li{
+    list-style-type: none;
+}
+/* .lg-actions .lg-next:before {
+    content: "\e095"!important;
+}
+.lg-actions .lg-prev:after {
+    content: "\e094";
+} */

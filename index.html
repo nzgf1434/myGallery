@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>МОЙ СЛАЙДЕР</title>
         <!-- <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="lightgallery.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="home">
@@ -35,7 +36,10 @@
         
         <script src="dist/myGallery.js"></script>
         <script>
-            myGallery('lightgallery');
+            myGallery('lightgallery', {
+                prevHtml: "",
+                nextHtml: ""
+            });
         </script>
         
     </body>

@@ -1,10 +1,16 @@
 export default class Slide{
-    constructor(src, index){
+    constructor(src, markup){
         this.src = src;
-        this.index = index;
-        this.markup = `<div class="lg-item lg-item${this.index}"><div class="lg-img-wrap">::before<img class="lg-object lg-image" src="${this.src}"></div></div>`;
+        this.markup = markup;
+        this.el = document.createElement('div');
+        this.el.classList = 'lg-item';
+        
+        this.el.insertAdjacentHTML('afterBegin', markup);
+        this.el.firstElementChild.firstElementChild.setAttribute('src', this.src);
+
+
     }
-    showSlide(){
-        document.querySelector(`.lg-item${this.index}`).classList.toggle('.show');
-    }
+    // showSlide(){
+    //     document.querySelector(`.lg-item${this.index}`).classList.toggle('.show');
+    // }
 }
