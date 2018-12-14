@@ -1,12 +1,8 @@
 export default class Slide{
-    constructor(src, markup){
-        this.src = src;
-        this.markup = markup;
+    constructor(markupObj){
         this.el = document.createElement('div');
         this.el.classList = 'lg-item';
-        
-        this.el.insertAdjacentHTML('afterBegin', markup);
-        this.el.firstElementChild.firstElementChild.setAttribute('src', this.src);
+        this.el.insertAdjacentHTML('afterBegin', markupObj.markup.slideMarkup);
     }
     // showSlide(){
     //     document.querySelector(`.lg-item${this.index}`).classList.toggle('.show');
