@@ -21,6 +21,21 @@ export default class Gallery{
         // Adding slides in general gallery markup
         let containerForSlides = document.querySelector('.lg-inner');
         arrSlides.map((item) => containerForSlides.appendChild(item.el));
-        console.log('Done');
+
+        document.querySelector('.lg-outer').addEventListener('click', this.destroyGallery);
+        
     }
+    // В каком классе должен быть этот метод?
+    destroyGallery(e){
+        e.preventDefault();
+        console.log(e.target);
+        if (e.target.classList.contains('lg-img-wrap') | e.target.classList.contains('lg-close')){
+            
+            let elForDel1 = document.querySelector('.lg-outer');
+            let elForDel2 = document.querySelector('.lg-backdrop');
+            document.querySelector('.lg-outer').parentElement.removeChild(elForDel1);
+            document.querySelector('.lg-backdrop').parentElement.removeChild(elForDel2);
+            document.body.classList.remove('lg-on')
+        }
+       };
 }

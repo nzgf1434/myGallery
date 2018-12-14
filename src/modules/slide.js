@@ -7,8 +7,6 @@ export default class Slide{
         
         this.el.insertAdjacentHTML('afterBegin', markup);
         this.el.firstElementChild.firstElementChild.setAttribute('src', this.src);
-
-
     }
     // showSlide(){
     //     document.querySelector(`.lg-item${this.index}`).classList.toggle('.show');
