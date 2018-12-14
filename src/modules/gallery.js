@@ -1,6 +1,9 @@
 export default class Gallery{
     constructor(arrSlides, markupObj, dataObj, settings){
+        this.index = 0;
 
+        // Hide slides from html
+        document.querySelector('#lightgallery').style.display = 'none';
         // Create Gallery DOM-elements
         document.body.insertAdjacentHTML('beforeend', markupObj.markup.divBackdrop);
         document.body.insertAdjacentHTML('beforeend', markupObj.markup.generalGalleryMarkup);
@@ -19,14 +22,19 @@ export default class Gallery{
     // В каком классе должен быть этот метод?
     destroyGallery(e){
         e.preventDefault();
-        console.log(e.target);
         if (e.target.classList.contains('lg-img-wrap') | e.target.classList.contains('lg-close')){
-            
             let elForDel1 = document.querySelector('.lg-outer');
             let elForDel2 = document.querySelector('.lg-backdrop');
             document.querySelector('.lg-outer').parentElement.removeChild(elForDel1);
             document.querySelector('.lg-backdrop').parentElement.removeChild(elForDel2);
             document.body.classList.remove('lg-on');
-        }
-       };
+            document.querySelector('#lightgallery').style.display = 'block';
+        };
+        
+    };
+
+    getSlides(){
+        return document.querySelectorAll('.lg-item');
+    }
+    
 }

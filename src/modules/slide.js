@@ -4,7 +4,4 @@ export default class Slide{
         this.el.classList = 'lg-item';
         this.el.insertAdjacentHTML('afterBegin', markupObj.markup.slideMarkup);
     }
-    // showSlide(){
-    //     document.querySelector(`.lg-item${this.index}`).classList.toggle('.show');
-    // }
 }

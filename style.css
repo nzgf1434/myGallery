@@ -117,10 +117,10 @@ body{
     padding-bottom: 80px;
 }
 /************************************ My CSS ***********************************/
-/* .lg-item{
+.lg-outer .lg-item{
     display: none;
-} */
-.show{
+}
+.lg-outer .show{
     display: block;
 }
 .demo-gallery > ul > li{
