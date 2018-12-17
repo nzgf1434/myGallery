@@ -8,7 +8,7 @@ window.myGallery = function(id, sets){
     let models = [];
     const itemsForSlider = Array.from(document.querySelector(`#${id}`).children);
     let gallery = null;
-
+    let firstClickedSlideIndex = null;
     const markup = new Markup();
     const data = new Data();
         
@@ -20,29 +20,23 @@ window.myGallery = function(id, sets){
             models.push(new Slide(markup));
         };
 
-        // Create Gallery
-        gallery = new Gallery(models, markup, data, settings); // Нужно ли хранить ссылку на нее и где? 
-        // Возможно при уничтожении галереи есть смысл в дальнейшем не строить ее заново, а брать по ссылке?
-
-        // Mark - Gallery exist
-        document.body.classList.add('lg-on');  
-
         // Put index of clicked img to gallery
         Array.from(document.querySelectorAll('#lightgallery > li')).map((item, index) => {
             if (item.children[0].children[0].getAttribute('src') === e.target.getAttribute('src')){
-                gallery.index = index;
-                let el = document.querySelectorAll('.lg-item')[index];
-                el.classList.add('lg-current');
-                el.classList.toggle('show');
+                firstClickedSlideIndex = index;
             }
         });
 
-        let engine = new Engine(gallery.getSlides(), gallery.index);
+         // Create Gallery
+         gallery = new Gallery(models, markup, data, firstClickedSlideIndex, settings); 
+      
+         // Create Engine for Gallery
+        let engine = new Engine(gallery.getSlides(), gallery.index, data);
 
 
-        // Prevent adding doubled el-s for next Gallery start
-        models = [];     // Возможно это д.б. в DestroyGallery()
-        gallery.index = 0; // Возможно это д.б. в DestroyGallery()
+        // Prevent adding doubled elements for next Gallery start
+        models = [];     
+        // gallery.index = 0; // Возможно это д.б. в DestroyGallery()
      }
 
    };

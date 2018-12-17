@@ -1,6 +1,6 @@
 export default class Gallery{
-    constructor(arrSlides, markupObj, dataObj, settings){
-        this.index = 0;
+    constructor(arrSlides, markupObj, dataObj, index, settings){
+        this.index = index;
 
         // Hide slides from html
         document.querySelector('#lightgallery').style.display = 'none';
@@ -16,10 +16,26 @@ export default class Gallery{
         for (let i = 0; i < arrImg.length; i++){
             arrImg[i].setAttribute('src', dataObj.src[i]);
         };
+
+        // Set slide-counter first slide
+        document.getElementById('lg-counter-current').textContent = this.index + 1;
+
+        // Mark and show first slide
+        let el = document.querySelectorAll('.lg-item')[this.index];
+        el.classList.add('lg-current');
+        el.classList.toggle('show');
+
+        document.querySelector('.lg-sub-html').insertAdjacentHTML('afterbegin', dataObj.subStructure);
+        document.querySelector('.lg-sub-html > h4').textContent = dataObj.slideText[this.index].header;
+        document.querySelector('.lg-sub-html > p').textContent = dataObj.slideText[this.index].text;
+        
+         // Mark - Gallery exist
+         document.body.classList.add('lg-on'); 
+
         // Delete Gallery
         document.querySelector('.lg-outer').addEventListener('click', this.destroyGallery);
     }
-    // В каком классе должен быть этот метод?
+    
     destroyGallery(e){
         e.preventDefault();
         if (e.target.classList.contains('lg-img-wrap') | e.target.classList.contains('lg-close')){

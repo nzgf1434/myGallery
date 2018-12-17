@@ -118,17 +118,14 @@ body{
 }
 /************************************ My CSS ***********************************/
 .lg-outer .lg-item{
-    display: none;
+    /* display: none; */
+    opacity: 0;
 }
 .lg-outer .show{
-    display: block;
+    /* display: block; */
+    opacity: 1;
+    transition: all 0.7s;
 }
 .demo-gallery > ul > li{
     list-style-type: none;
 }
-/* .lg-actions .lg-next:before {
-    content: "\e095"!important;
-}
-.lg-actions .lg-prev:after {
-    content: "\e094";
-} */
